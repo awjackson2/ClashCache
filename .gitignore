@@ -15,8 +15,8 @@ node_modules
 # Build outputs
 dist
 dist-ssr
-docs
 *.local
+# Note: docs/ is NOT ignored because it's needed for GitHub Pages deployment
 
 # Environment variables
 .env
