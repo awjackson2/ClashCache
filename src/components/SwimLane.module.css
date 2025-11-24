@@ -1,0 +1,38 @@
+.swimLane {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.laneTitle {
+  margin: 0 0 0.75rem;
+  font-size: 1.1rem;
+}
+
+.decksRow {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.decksRow::-webkit-scrollbar {
+  height: 8px;
+}
+
+.decksRow::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.8);
+}
+
+.decksRow::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.9);
+  border-radius: 999px;
+}
+
+.deckWrapper {
+  flex: 0 0 auto;
+}
+
+

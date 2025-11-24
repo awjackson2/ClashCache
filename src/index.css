@@ -1,5 +1,5 @@
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -22,49 +22,15 @@ a:hover {
   color: #535bf2;
 }
 
-html {
-  min-height: 100%;
-}
-
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background-image:
-    radial-gradient(circle at center, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.08) 40%, rgba(0, 0, 0, 0.45) 100%),
-    url('./assets/wood-board-background2.jpg');
-  background-size: cover, 12%;
-  background-repeat: no-repeat, repeat;
-  background-attachment: fixed, fixed;
-  background-position: center, center;
-  display: block;
-  overflow-x: hidden;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-  -webkit-text-fill-color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+#root {
+  width: 100%;
+  min-height: 100vh;
 }
 
 @media (prefers-color-scheme: light) {
@@ -74,9 +40,6 @@ button:focus-visible {
   }
   a:hover {
     color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
   }
 }
 

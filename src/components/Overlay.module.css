@@ -1,0 +1,93 @@
+/* Global theme tokens for overlays (consider moving to a shared theme file) */
+:root {
+  --overlay-bg: rgba(7, 27, 59, 0.18);
+  --overlay-animation-duration: 800ms;
+  --overlay-animation-easing: cubic-bezier(0.24, 0.8, 0.35, 1);
+  --overlay-animation-delay: 0ms;
+  --overlay-content-duration: 600ms;
+  --overlay-content-delay: 0ms;
+  --overlay-parallax-intensity: 0.3;
+  --overlay-opacity: 1;
+  --overlay-enter-opacity: 0.9;
+}
+
+.overlayRoot {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay-bg);
+  clip-path: var(--overlay-clip, polygon(0 0, 100% 0, 100% 100%, 0 100%));
+  -webkit-clip-path: var(--overlay-clip, polygon(0 0, 100% 0, 100% 100%, 0 100%));
+  overflow: hidden;
+  pointer-events: none;
+  display: block;
+  z-index: var(--overlay-z, 1);
+  will-change: transform, opacity;
+  transition:
+    transform var(--overlay-duration, var(--overlay-animation-duration)) var(--overlay-easing, var(--overlay-animation-easing))
+      var(--overlay-delay, var(--overlay-animation-delay)),
+    opacity var(--overlay-duration, var(--overlay-animation-duration)) var(--overlay-easing, var(--overlay-animation-easing))
+      var(--overlay-delay, var(--overlay-animation-delay));
+  transform: translate3d(0, 0, 0);
+}
+
+.overlayEntering,
+.overlayExiting {
+  opacity: var(--overlay-enter-opacity, 0.9);
+}
+
+.overlayEntered {
+  opacity: var(--overlay-opacity, 1);
+}
+
+.overlayContent {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition:
+    transform var(--overlay-content-duration, 600ms) var(--overlay-easing, var(--overlay-animation-easing))
+      var(--overlay-content-delay, 0ms),
+    opacity var(--overlay-content-duration, 600ms) var(--overlay-easing, var(--overlay-animation-easing))
+      var(--overlay-content-delay, 0ms);
+}
+
+.overlayContent > * {
+  max-width: 100%;
+}
+
+.overlayPattern,
+.overlayTexture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: var(--overlay-blend-mode, normal);
+}
+
+.overlayTexture {
+  opacity: 0.4;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    --overlay-duration: calc(var(--overlay-duration, var(--overlay-animation-duration)) * 0.85);
+  }
+
+  .overlayContent {
+    padding: 0.5rem;
+  }
+}
+

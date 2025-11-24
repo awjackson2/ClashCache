@@ -1,0 +1,50 @@
+.deckRoot {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 0.75rem 0.9rem;
+  border-radius: 18px;
+  background: radial-gradient(circle at 0% 0%, #111827, #020617);
+  border: 1px solid rgba(148, 163, 184, 0.5);
+}
+
+.deckRootOptimized {
+  background: radial-gradient(circle at 0% 0%, #4c1d95, #020617);
+  border-color: rgba(167, 139, 250, 0.8);
+}
+
+.title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.9);
+  margin-bottom: 0.4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: auto;
+  gap: 0.45rem 0.5rem;
+}
+
+.cardCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty {
+  width: 96px;
+  height: 120px;
+  border-radius: 12px;
+  border: 2px dashed rgba(75, 85, 99, 0.8);
+  background: radial-gradient(circle at 20% 0%, #020617, #111827);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: rgba(148, 163, 184, 0.9);
+}
+
+

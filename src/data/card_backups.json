@@ -1,0 +1,2054 @@
+[
+  {
+    "name": "Knight",
+    "backups": [
+      {
+        "name": "Mini P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Prince",
+        "stars": 1
+      },
+      {
+        "name": "Dark Prince",
+        "stars": 1
+      },
+      {
+        "name": "Valkyrie",
+        "stars": 1
+      },
+      {
+        "name": "Royal Ghost",
+        "stars": 1
+      },
+      {
+        "name": "Giant Skeleton",
+        "stars": 1
+      },
+      {
+        "name": "Skeleton King",
+        "stars": 1
+      },
+      {
+        "name": "Fisherman",
+        "stars": 1
+      },
+      {
+        "name": "Mighty Miner",
+        "stars": 1
+      },
+      {
+        "name": "Berserker",
+        "stars": 1
+      },
+      {
+        "name": "P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Boss Bandit",
+        "stars": 1
+      },
+      {
+        "name": "Mega Knight",
+        "stars": 1
+      },
+      {
+        "name": "Goblin Machine",
+        "stars": 1
+      },
+      {
+        "name": "Golden Knight",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Archers",
+    "backups": [
+      {
+        "name": "Bats",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      },
+      {
+        "name": "Dart Goblin",
+        "stars": 1
+      },
+      {
+        "name": "Spear Goblins",
+        "stars": 1
+      },
+      {
+        "name": "Mega Minion",
+        "stars": 1
+      },
+      {
+        "name": "Firecracker",
+        "stars": 1
+      },
+      {
+        "name": "Minions",
+        "stars": 1
+      },
+      {
+        "name": "Archer Queen",
+        "stars": 1
+      },
+      {
+        "name": "Little Prince",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblins",
+    "backups": [
+      {
+        "name": "Skeletons",
+        "stars": 1
+      },
+      {
+        "name": "Skeleton Army",
+        "stars": 1
+      },
+      {
+        "name": "Goblin Gang",
+        "stars": 1
+      },
+      {
+        "name": "Guards",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Giant",
+    "backups": [
+      {
+        "name": "Golem",
+        "stars": 1
+      },
+      {
+        "name": "Electro Giant",
+        "stars": 1
+      },
+      {
+        "name": "Elixir Golem",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "P.E.K.K.A",
+    "backups": [
+      {
+        "name": "Prince",
+        "stars": 1
+      },
+      {
+        "name": "Mini P.E.K.K.A",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Minions",
+    "backups": [
+      {
+        "name": "Mega Minion",
+        "stars": 1
+      },
+      {
+        "name": "Archers",
+        "stars": 1
+      },
+      {
+        "name": "Bats",
+        "stars": 1
+      },
+      {
+        "name": "Little Prince",
+        "stars": 1
+      },
+      {
+        "name": "Minion Horde",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Balloon",
+    "backups": []
+  },
+  {
+    "name": "Witch",
+    "backups": [
+      {
+        "name": "Night Witch",
+        "stars": 1
+      },
+      {
+        "name": "Mother Witch",
+        "stars": 1
+      },
+      {
+        "name": "Wizard",
+        "stars": 1
+      },
+      {
+        "name": "Furnace",
+        "stars": 1
+      },
+      {
+        "name": "Executioner",
+        "stars": 1
+      },
+      {
+        "name": "Baby Dragon",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Barbarians",
+    "backups": [
+      {
+        "name": "Skeleton Army",
+        "stars": 1
+      },
+      {
+        "name": "Guards",
+        "stars": 1
+      },
+      {
+        "name": "Goblin Gang",
+        "stars": 1
+      },
+      {
+        "name": "Elite Barbarians",
+        "stars": 1
+      },
+      {
+        "name": "Minion Horde",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Golem",
+    "backups": [
+      {
+        "name": "Giant",
+        "stars": 1
+      },
+      {
+        "name": "Elixir Golem",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Skeletons",
+    "backups": [
+      {
+        "name": "Skeleton Army",
+        "stars": 1
+      },
+      {
+        "name": "Ice spirit",
+        "stars": 1
+      },
+      {
+        "name": "Fire spirit",
+        "stars": 1
+      },
+      {
+        "name": "Electro spirit",
+        "stars": 1
+      },
+      {
+        "name": "Heal spirit",
+        "stars": 1
+      },
+      {
+        "name": "Bats",
+        "stars": 1
+      },
+      {
+        "name": "Spear Goblins",
+        "stars": 1
+      },
+      {
+        "name": "Goblins",
+        "stars": 1
+      },
+      {
+        "name": "Berserker",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Valkyrie",
+    "backups": [
+      {
+        "name": "Mini P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Prince",
+        "stars": 1
+      },
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Boss Bandit",
+        "stars": 1
+      },
+      {
+        "name": "Dark Prince",
+        "stars": 1
+      },
+      {
+        "name": "Ice Golem",
+        "stars": 1
+      },
+      {
+        "name": "Mega Knight",
+        "stars": 1
+      },
+      {
+        "name": "Monk",
+        "stars": 1
+      },
+      {
+        "name": "Mighty Miner",
+        "stars": 1
+      },
+      {
+        "name": "Goblin Machine",
+        "stars": 1
+      },
+      {
+        "name": "Golden Knight",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Skeleton Army",
+    "backups": [
+      {
+        "name": "Goblins",
+        "stars": 1
+      },
+      {
+        "name": "Guards",
+        "stars": 1
+      },
+      {
+        "name": "Goblin Gang",
+        "stars": 1
+      },
+      {
+        "name": "Barbarians",
+        "stars": 1
+      },
+      {
+        "name": "Spear Goblins",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Bomber",
+    "backups": [
+      {
+        "name": "Goblin Demolisher",
+        "stars": 1
+      },
+      {
+        "name": "Executioner",
+        "stars": 1
+      },
+      {
+        "name": "Firecracker",
+        "stars": 1
+      },
+      {
+        "name": "Fire Spirit",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Musketeer",
+    "backups": [
+      {
+        "name": "Wizard",
+        "stars": 1
+      },
+      {
+        "name": "Ice Wizard",
+        "stars": 1
+      },
+      {
+        "name": "Archer Queen",
+        "stars": 1
+      },
+      {
+        "name": "Archers",
+        "stars": 1
+      },
+      {
+        "name": "Magic Archer",
+        "stars": 1
+      },
+      {
+        "name": "Little Prince",
+        "stars": 1
+      },
+      {
+        "name": "Hunter",
+        "stars": 1
+      },
+      {
+        "name": "Dart Goblin",
+        "stars": 1
+      },
+      {
+        "name": "Cannon Cart",
+        "stars": 1
+      },
+      {
+        "name": "Mega Minion",
+        "stars": 1
+      },
+      {
+        "name": "Electro Wizard",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Baby Dragon",
+    "backups": [
+      {
+        "name": "Electro Dragon",
+        "stars": 1
+      },
+      {
+        "name": "Wizard",
+        "stars": 1
+      },
+      {
+        "name": "Furnace",
+        "stars": 1
+      },
+      {
+        "name": "Witch",
+        "stars": 1
+      },
+      {
+        "name": "Mega Minion",
+        "stars": 1
+      },
+      {
+        "name": "Minions",
+        "stars": 1
+      },
+      {
+        "name": "Ice Wizard",
+        "stars": 1
+      },
+      {
+        "name": "Flying Machine",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Prince",
+    "backups": [
+      {
+        "name": "Mini P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Dark Prince",
+        "stars": 1
+      },
+      {
+        "name": "P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Boss Bandit",
+        "stars": 1
+      },
+      {
+        "name": "Bandit",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Wizard",
+    "backups": [
+      {
+        "name": "Musketeer",
+        "stars": 1
+      },
+      {
+        "name": "Ice Wizard",
+        "stars": 1
+      },
+      {
+        "name": "Baby Dragon",
+        "stars": 1
+      },
+      {
+        "name": "Electro Wizard",
+        "stars": 1
+      },
+      {
+        "name": "Executioner",
+        "stars": 1
+      },
+      {
+        "name": "Witch",
+        "stars": 1
+      },
+      {
+        "name": "Bowler",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Mini P.E.K.K.A",
+    "backups": [
+      {
+        "name": "Prince",
+        "stars": 1
+      },
+      {
+        "name": "Dark Prince",
+        "stars": 1
+      },
+      {
+        "name": "P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Berserker",
+        "stars": 1
+      },
+      {
+        "name": "Boss Bandit",
+        "stars": 1
+      },
+      {
+        "name": "Bandit",
+        "stars": 1
+      },
+      {
+        "name": "Mighty Miner",
+        "stars": 1
+      },
+      {
+        "name": "Valkyrie",
+        "stars": 1
+      },
+      {
+        "name": "Inferno Dragon",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Spear Goblins",
+    "backups": [
+      {
+        "name": "Skeletons",
+        "stars": 1
+      },
+      {
+        "name": "Archers",
+        "stars": 1
+      },
+      {
+        "name": "Dart Goblin",
+        "stars": 1
+      },
+      {
+        "name": "Bats",
+        "stars": 1
+      },
+      {
+        "name": "Minions",
+        "stars": 1
+      },
+      {
+        "name": "Fire Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Ice Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Electro Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Heal Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Rascals",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Giant Skeleton",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Mega Knight",
+        "stars": 1
+      },
+      {
+        "name": "Ice Golem",
+        "stars": 1
+      },
+      {
+        "name": "Goblin Machine",
+        "stars": 1
+      },
+      {
+        "name": "Valkyrie",
+        "stars": 1
+      },
+      {
+        "name": "P.E.K.K.A",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Hog Rider",
+    "backups": [
+      {
+        "name": "Ram Rider",
+        "stars": 1
+      },
+      {
+        "name": "Battle Ram",
+        "stars": 1
+      },
+      {
+        "name": "Wall Breakers",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Minion Horde",
+    "backups": [
+      {
+        "name": "Skeleton Dragons",
+        "stars": 1
+      },
+      {
+        "name": "Minions",
+        "stars": 1
+      },
+      {
+        "name": "Inferno Dragon",
+        "stars": 1
+      },
+      {
+        "name": "Bats",
+        "stars": 1
+      },
+      {
+        "name": "Archers",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Ice Wizard",
+    "backups": [
+      {
+        "name": "Musketeer",
+        "stars": 1
+      },
+      {
+        "name": "Baby Dragon",
+        "stars": 1
+      },
+      {
+        "name": "Zappies",
+        "stars": 1
+      },
+      {
+        "name": "Electro Wizard",
+        "stars": 1
+      },
+      {
+        "name": "Ice Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Skeleton Dragons",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Royal Giant",
+    "backups": []
+  },
+  {
+    "name": "Guards",
+    "backups": [
+      {
+        "name": "Goblins",
+        "stars": 1
+      },
+      {
+        "name": "Skeleton Army",
+        "stars": 1
+      },
+      {
+        "name": "Spear Goblins",
+        "stars": 1
+      },
+      {
+        "name": "Goblin Gang",
+        "stars": 1
+      },
+      {
+        "name": "Bats",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Princess",
+    "backups": [
+      {
+        "name": "Goblin Barrel",
+        "stars": 1
+      },
+      {
+        "name": "Skeleton Barrel",
+        "stars": 1
+      },
+      {
+        "name": "Wall Breakers",
+        "stars": 1
+      },
+      {
+        "name": "Suspicious Bush",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Dark Prince",
+    "backups": [
+      {
+        "name": "Mini P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Prince",
+        "stars": 1
+      },
+      {
+        "name": "Valkyrie",
+        "stars": 1
+      },
+      {
+        "name": "Royal Ghost",
+        "stars": 1
+      },
+      {
+        "name": "Boss Bandit",
+        "stars": 1
+      },
+      {
+        "name": "Mighty Miner",
+        "stars": 1
+      },
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Golden Knight",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Three Musketeers",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Lava Hound",
+    "backups": [
+      {
+        "name": "Balloon",
+        "stars": 1
+      },
+      {
+        "name": "Baby Dragon",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Ice Spirit",
+    "backups": [
+      {
+        "name": "Fire Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Electro Spirit",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Fire Spirit",
+    "backups": [
+      {
+        "name": "Ice Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Electro Spirit",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Miner",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Sparky",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Bowler",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Lumberjack",
+    "backups": [
+      {
+        "name": "Mini P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Prince",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Battle Ram",
+    "backups": [
+      {
+        "name": "Hog Rider",
+        "stars": 1
+      },
+      {
+        "name": "Ram Rider",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Inferno Dragon",
+    "backups": [
+    ]
+  },
+  {
+    "name": "Ice Golem",
+    "backups": [
+      {
+        "name": "Giant",
+        "stars": 1
+      },
+      {
+        "name": "Golem",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Mega Minion",
+    "backups": [
+      {
+        "name": "Lava Hound",
+        "stars": 1
+      },
+      {
+        "name": "Balloon",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Dart Goblin",
+    "backups": [
+      {
+        "name": "Musketeer",
+        "stars": 1
+      },
+      {
+        "name": "Wizard",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Gang",
+    "backups": [
+      {
+        "name": "Skeletons",
+        "stars": 1
+      },
+      {
+        "name": "Skeleton Army",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Electro Wizard",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Elite Barbarians",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Hunter",
+    "backups": [
+      {
+        "name": "Musketeer",
+        "stars": 1
+      },
+      {
+        "name": "Wizard",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Executioner",
+    "backups": [
+      {
+        "name": "Musketeer",
+        "stars": 1
+      },
+      {
+        "name": "Wizard",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Bandit",
+    "backups": [
+      {
+        "name": "Mini P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Prince",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Royal Recruits",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Night Witch",
+    "backups": [
+      {
+        "name": "Witch",
+        "stars": 1
+      },
+      {
+        "name": "Mother Witch",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Bats",
+    "backups": [
+      {
+        "name": "Skeletons",
+        "stars": 1
+      },
+      {
+        "name": "Skeleton Army",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Royal Ghost",
+    "backups": [
+      {
+        "name": "Mini P.E.K.K.A",
+        "stars": 1
+      },
+      {
+        "name": "Prince",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Ram Rider",
+    "backups": [
+      {
+        "name": "Hog Rider",
+        "stars": 1
+      },
+      {
+        "name": "Battle Ram",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Zappies",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Rascals",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Cannon Cart",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Mega Knight",
+    "backups": [
+      {
+        "name": "Giant",
+        "stars": 1
+      },
+      {
+        "name": "Golem",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Skeleton Barrel",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Flying Machine",
+    "backups": [
+      {
+        "name": "Lava Hound",
+        "stars": 1
+      },
+      {
+        "name": "Balloon",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Wall Breakers",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Royal Hogs",
+    "backups": [
+      {
+        "name": "Hog Rider",
+        "stars": 1
+      },
+      {
+        "name": "Ram Rider",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Giant",
+    "backups": [
+      {
+        "name": "Hog Rider",
+        "stars": 1
+      },
+      {
+        "name": "Ram Rider",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Fisherman",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Magic Archer",
+    "backups": [
+      {
+        "name": "Musketeer",
+        "stars": 1
+      },
+      {
+        "name": "Wizard",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Electro Dragon",
+    "backups": [
+      {
+        "name": "Lava Hound",
+        "stars": 1
+      },
+      {
+        "name": "Balloon",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Firecracker",
+    "backups": [
+      {
+        "name": "Musketeer",
+        "stars": 1
+      },
+      {
+        "name": "Wizard",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Mighty Miner",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Elixir Golem",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Battle Healer",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Skeleton King",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Archer Queen",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Golden Knight",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Monk",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Skeleton Dragons",
+    "backups": [
+      {
+        "name": "Lava Hound",
+        "stars": 1
+      },
+      {
+        "name": "Balloon",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Mother Witch",
+    "backups": [
+      {
+        "name": "Witch",
+        "stars": 1
+      },
+      {
+        "name": "Night Witch",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Electro Spirit",
+    "backups": [
+      {
+        "name": "Ice Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Fire Spirit",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Electro Giant",
+    "backups": [
+      {
+        "name": "Giant",
+        "stars": 1
+      },
+      {
+        "name": "Golem",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Phoenix",
+    "backups": [
+      {
+        "name": "Lava Hound",
+        "stars": 1
+      },
+      {
+        "name": "Balloon",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Little Prince",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Demolisher",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Machine",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Suspicious Bush",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblinstein",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Rune Giant",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Berserker",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Boss Bandit",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Cannon",
+    "backups": [
+      {
+        "name": "Tesla",
+        "stars": 1
+      },
+      {
+        "name": "Bomb Tower",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Hut",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Mortar",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Inferno Tower",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Bomb Tower",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Barbarian Hut",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Tesla",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Bomb Tower",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Elixir Collector",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "X-Bow",
+    "backups": [
+
+    ]
+  },
+  {
+    "name": "Tombstone",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Furnace",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Cage",
+    "backups": [
+      {
+        "name": "Cannon",
+        "stars": 1
+      },
+      {
+        "name": "Tesla",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Drill",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Fireball",
+    "backups": [
+      {
+        "name": "Poison",
+        "stars": 1
+      },
+      {
+        "name": "Rocket",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Arrows",
+    "backups": [
+      {
+        "name": "Fireball",
+        "stars": 1
+      },
+      {
+        "name": "Poison",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Rage",
+    "backups": [
+      {
+        "name": "Tornado",
+        "stars": 1
+      },
+      {
+        "name": "Freeze",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Rocket",
+    "backups": [
+      {
+        "name": "Fireball",
+        "stars": 1
+      },
+      {
+        "name": "Poison",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Barrel",
+    "backups": [
+      {
+        "name": "Tornado",
+        "stars": 1
+      },
+      {
+        "name": "Freeze",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Freeze",
+    "backups": [
+      {
+        "name": "Tornado",
+        "stars": 1
+      },
+      {
+        "name": "Earthquake",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Mirror",
+    "backups": [
+      {
+        "name": "Tornado",
+        "stars": 1
+      },
+      {
+        "name": "Freeze",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Lightning",
+    "backups": [
+      {
+        "name": "Fireball",
+        "stars": 1
+      },
+      {
+        "name": "Poison",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Zap",
+    "backups": [
+      {
+        "name": "Fireball",
+        "stars": 1
+      },
+      {
+        "name": "Poison",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Poison",
+    "backups": [
+      {
+        "name": "Fireball",
+        "stars": 1
+      },
+      {
+        "name": "Rocket",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Graveyard",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "The Log",
+    "backups": [
+      {
+        "name": "Tornado",
+        "stars": 1
+      },
+      {
+        "name": "Freeze",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Tornado",
+    "backups": [
+      {
+        "name": "Freeze",
+        "stars": 1
+      },
+      {
+        "name": "Earthquake",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Clone",
+    "backups": [
+      {
+        "name": "Tornado",
+        "stars": 1
+      },
+      {
+        "name": "Freeze",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Earthquake",
+    "backups": [
+      {
+        "name": "Tornado",
+        "stars": 1
+      },
+      {
+        "name": "Freeze",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Barbarian Barrel",
+    "backups": [
+      {
+        "name": "Tornado",
+        "stars": 1
+      },
+      {
+        "name": "Freeze",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Heal Spirit",
+    "backups": [
+      {
+        "name": "Ice Spirit",
+        "stars": 1
+      },
+      {
+        "name": "Fire Spirit",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Giant Snowball",
+    "backups": [
+      {
+        "name": "Fireball",
+        "stars": 1
+      },
+      {
+        "name": "Poison",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Royal Delivery",
+    "backups": [
+      {
+        "name": "Fireball",
+        "stars": 1
+      },
+      {
+        "name": "Poison",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Void",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Goblin Curse",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Spirit Empress",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Vines",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Tower Princess",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Cannoneer",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Dagger Duchess",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "name": "Royal Chef",
+    "backups": [
+      {
+        "name": "Knight",
+        "stars": 1
+      },
+      {
+        "name": "Musketeer",
+        "stars": 1
+      }
+    ]
+  }
+]

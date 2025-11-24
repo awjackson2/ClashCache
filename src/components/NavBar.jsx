@@ -1,7 +1,14 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { useDelayedNavigation, SECTIONS } from '../contexts/NavigationContext';
-import { FaHome, FaLayerGroup, FaTrophy } from 'react-icons/fa';
-import './NavBar.css';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { FaHome, FaTrophy, FaLayerGroup, FaCode } from 'react-icons/fa'
+import styles from './NavBar.module.css'
+
+const DEFAULT_LINKS = [
+  { label: 'Home', path: '/', icon: FaHome },
+  { label: 'Decks', path: '/decks', icon: FaLayerGroup },
+  { label: 'Ranks', path: '/leaderboards', icon: FaTrophy },
+]
 
 const INITIAL_RECT = {
   width: 0,
@@ -9,136 +16,169 @@ const INITIAL_RECT = {
   x: 0,
   y: 0,
   opacity: 0,
-};
+}
 
 const rectsAreEqual = (a, b) =>
   Math.abs(a.width - b.width) < 0.5 &&
   Math.abs(a.height - b.height) < 0.5 &&
   Math.abs(a.x - b.x) < 0.5 &&
   Math.abs(a.y - b.y) < 0.5 &&
-  Math.abs(a.opacity - b.opacity) < 0.01;
+  Math.abs(a.opacity - b.opacity) < 0.01
 
-export default function NavBar() {
-  const { delayedNavigate, currentSection } = useDelayedNavigation();
-  const navContainerRef = useRef(null);
-  const pillRefs = useRef({});
-  const [highlightRect, setHighlightRect] = useState(INITIAL_RECT);
-  const [isHighlightReady, setHighlightReady] = useState(false);
+function NavBar({ links = DEFAULT_LINKS }) {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const navContainerRef = useRef(null)
+  const pillRefs = useRef({})
+  const [highlightRect, setHighlightRect] = useState(INITIAL_RECT)
+  const [isHighlightReady, setHighlightReady] = useState(false)
 
-  const navItems = [
-    { section: SECTIONS.HOME, path: '/', icon: FaHome, label: 'Home' },
-    { section: SECTIONS.DECKS, path: '/decks/build', icon: FaLayerGroup, label: 'Decks' },
-    { section: SECTIONS.LEADERBOARDS, path: '/leaderboards', icon: FaTrophy, label: 'Ranks' },
-  ];
+  const normalizedLinks = useMemo(() => links.filter(Boolean), [links])
 
-  const commitHighlightRect = useCallback((nextRect) => {
-    setHighlightRect((prev) => (rectsAreEqual(prev, nextRect) ? prev : nextRect));
-    if (nextRect.opacity > 0 && !isHighlightReady) {
-      setHighlightReady(true);
-    }
-  }, [isHighlightReady]);
-
-  const calculateRectForSection = useCallback((section) => {
-    const containerEl = navContainerRef.current;
-    const targetEl = pillRefs.current[section];
-
-    if (!containerEl || !targetEl) {
-      return INITIAL_RECT;
+  const activePath = useMemo(() => {
+    if (!normalizedLinks.length) {
+      return ''
     }
 
-    const containerRect = containerEl.getBoundingClientRect();
-    const targetRect = targetEl.getBoundingClientRect();
-
-    return {
-      width: targetRect.width,
-      height: targetRect.height,
-      x: targetRect.left - containerRect.left,
-      y: targetRect.top - containerRect.top,
-      opacity: 1,
-    };
-  }, []);
-
-  const moveHighlightToSection = useCallback((section) => {
-    const nextRect = calculateRectForSection(section);
-    commitHighlightRect(nextRect);
-  }, [calculateRectForSection, commitHighlightRect]);
-
-  const handleNavClick = useCallback((section, path) => {
-    moveHighlightToSection(section);
-    if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
-      window.requestAnimationFrame(() => {
-        delayedNavigate(path);
-      });
-    } else {
-      delayedNavigate(path);
+    const exact = normalizedLinks.find((link) => link.path === location.pathname)
+    if (exact) {
+      return exact.path
     }
-  }, [delayedNavigate, moveHighlightToSection]);
 
-  const handleNavPointerDown = useCallback((section) => {
-    moveHighlightToSection(section);
-  }, [moveHighlightToSection]);
+    const partial = normalizedLinks
+      .filter((link) => link.path && link.path !== '/')
+      .find((link) => location.pathname.startsWith(link.path))
+
+    return partial?.path ?? normalizedLinks[0].path
+  }, [location.pathname, normalizedLinks])
+
+  const commitHighlightRect = useCallback(
+    (nextRect) => {
+      setHighlightRect((prev) => (rectsAreEqual(prev, nextRect) ? prev : nextRect))
+      if (nextRect.opacity > 0 && !isHighlightReady) {
+        setHighlightReady(true)
+      }
+    },
+    [isHighlightReady]
+  )
+
+  const calculateRectForPath = useCallback(
+    (path) => {
+      const containerEl = navContainerRef.current
+      const targetEl = pillRefs.current[path]
+      if (!containerEl || !targetEl) {
+        return INITIAL_RECT
+      }
+
+      const containerRect = containerEl.getBoundingClientRect()
+      const targetRect = targetEl.getBoundingClientRect()
+
+      return {
+        width: targetRect.width,
+        height: targetRect.height,
+        x: targetRect.left - containerRect.left,
+        y: targetRect.top - containerRect.top,
+        opacity: 1,
+      }
+    },
+    []
+  )
+
+  const moveHighlightToPath = useCallback(
+    (path) => {
+      commitHighlightRect(calculateRectForPath(path))
+    },
+    [calculateRectForPath, commitHighlightRect]
+  )
+
+  const handleNavClick = useCallback(
+    (path) => {
+      moveHighlightToPath(path)
+      if (typeof window !== 'undefined' && typeof window.requestAnimationFrame === 'function') {
+        window.requestAnimationFrame(() => navigate(path))
+      } else {
+        navigate(path)
+      }
+    },
+    [moveHighlightToPath, navigate]
+  )
+
+  const handleNavPointerDown = useCallback(
+    (path) => {
+      moveHighlightToPath(path)
+    },
+    [moveHighlightToPath]
+  )
 
   const updateHighlight = useCallback(() => {
-    const nextRect = calculateRectForSection(currentSection);
-    commitHighlightRect(nextRect);
-  }, [calculateRectForSection, commitHighlightRect, currentSection]);
+    if (!activePath) return
+    moveHighlightToPath(activePath)
+  }, [activePath, moveHighlightToPath])
 
   useLayoutEffect(() => {
-    updateHighlight();
-  }, [updateHighlight]);
+    updateHighlight()
+  }, [updateHighlight])
 
   useEffect(() => {
-    window.addEventListener('resize', updateHighlight);
+    window.addEventListener('resize', updateHighlight)
     return () => {
-      window.removeEventListener('resize', updateHighlight);
-    };
-  }, [updateHighlight]);
+      window.removeEventListener('resize', updateHighlight)
+    }
+  }, [updateHighlight])
 
   return (
-    <div className="top-nav-wrapper">
-      <nav ref={navContainerRef} className="top-nav" aria-label="Primary">
+    <div className={styles.wrapper}>
+      <nav ref={navContainerRef} className={styles.nav} aria-label="Primary navigation">
         <div
-          className={`top-nav-highlight blueprint-material${
-            isHighlightReady ? ' top-nav-highlight-ready' : ''
-          }`}
+          className={`${styles.highlight} ${isHighlightReady ? styles.highlightReady : ''}`}
           style={{
             transform: `translate3d(${highlightRect.x}px, ${highlightRect.y}px, 0)`,
             width: `${highlightRect.width}px`,
             height: `${highlightRect.height}px`,
             opacity: highlightRect.opacity,
-            '--bp-border-padding': '0.55rem',
           }}
         />
-        {navItems.map(({ section, path, icon: Icon, label }) => {
-          const isActive = currentSection === section;
-
+        {normalizedLinks.map(({ label, path, icon: Icon }) => {
+          const isActive = activePath === path
           return (
             <button
-              key={section}
+              key={path || label}
               type="button"
-              className={`top-nav-item${isActive ? ' top-nav-item-active' : ''}`}
-              onPointerDown={() => handleNavPointerDown(section)}
-              onClick={() => handleNavClick(section, path)}
+              className={`${styles.itemButton} ${isActive ? styles.itemActive : ''}`}
+              onPointerDown={() => handleNavPointerDown(path)}
+              onClick={() => handleNavClick(path)}
               aria-current={isActive ? 'page' : undefined}
             >
               <span
                 ref={(el) => {
                   if (el) {
-                    pillRefs.current[section] = el;
+                    pillRefs.current[path] = el
                   } else {
-                    delete pillRefs.current[section];
+                    delete pillRefs.current[path]
                   }
                 }}
-                className={`nav-item-pill${isActive ? ' nav-item-pill-active' : ''}`}
+                className={styles.pill}
               >
-                <Icon className="nav-item-icon" />
-                <span className="nav-item-label">{label}</span>
+                {Icon ? <Icon className={styles.icon} aria-hidden="true" /> : null}
+                <span className={styles.label}>{label}</span>
               </span>
             </button>
-          );
+          )
         })}
       </nav>
     </div>
-  );
+  )
 }
+
+NavBar.propTypes = {
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      path: PropTypes.string.isRequired,
+      icon: PropTypes.elementType,
+    })
+  ),
+}
+
+export default NavBar
 
