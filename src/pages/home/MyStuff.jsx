@@ -1,5 +1,6 @@
-import Card from '../../components/Card'
 import { usePlayerTag } from '../../state/PlayerTagContext.jsx'
+import Card from '../../components/Card'
+import styles from './MyStuff.module.css'
 
 function MyStuff() {
   const { currentPlayer } = usePlayerTag()
@@ -8,7 +9,7 @@ function MyStuff() {
 
   if (!currentPlayer) {
     return (
-      <section aria-label="My stuff">
+      <section aria-label="My stuff" className={styles.section}>
         <h1>My stuff</h1>
         <p className="lead">Load a player tag on the left to see your card collection.</p>
       </section>
@@ -16,23 +17,15 @@ function MyStuff() {
   }
 
   return (
-    <section aria-label="My stuff">
+    <section aria-label="My stuff" className={styles.section}>
       <h1>My stuff</h1>
-      <p className="lead" style={{ marginBottom: '1rem' }}>
-        All cards in your collection, with their current levels.
-      </p>
+      <p className="lead">All cards in your collection, with their current levels.</p>
       {cards.length === 0 ? (
-        <p style={{ color: '#9ca3af' }}>No cards found for this player.</p>
+        <p className={styles.emptyState}>No cards found for this player.</p>
       ) : (
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1rem',
-          }}
-        >
+        <div className={styles.grid}>
           {cards.map((card) => (
-            <div key={card.id} style={{ width: '150px' }}>
+            <div key={card.id} className={styles.cardSlot}>
               <Card
                 id={card.id}
                 name={card.name}

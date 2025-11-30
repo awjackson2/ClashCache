@@ -1,111 +1,81 @@
 import { createContext, useContext, useMemo, useState, useEffect } from 'react'
 
-const DECK_CACHE_STORAGE_KEY = 'clash-cache-deck-ids'
+const DECK_PAIR_STORAGE_KEY = 'clash-cache-deck-pairs-v1'
 
 const DeckCacheContext = createContext(null)
 
 function DeckCacheProvider({ children }) {
-  // Load from localStorage on mount
-  const [cachedDeckIds, setCachedDeckIds] = useState(() => {
+  const [cachedPairs, setCachedPairs] = useState(() => {
     try {
-      const stored = localStorage.getItem(DECK_CACHE_STORAGE_KEY)
+      const stored = localStorage.getItem(DECK_PAIR_STORAGE_KEY)
       if (stored) {
         const parsed = JSON.parse(stored)
-        return Array.isArray(parsed) ? parsed : []
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Failed to load deck cache from localStorage:', error)
-    }
-    return []
-  })
-
-  // Store deck data separately (loaded from Explore page)
-  const [cachedDecksData, setCachedDecksData] = useState(() => {
-    try {
-      const stored = localStorage.getItem(`${DECK_CACHE_STORAGE_KEY}-data`)
-      if (stored) {
-        const parsed = JSON.parse(stored)
-        return Array.isArray(parsed) ? parsed : []
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Failed to load deck cache data from localStorage:', error)
-    }
-    return []
-  })
-
-  // Save to localStorage whenever cachedDeckIds changes
-  useEffect(() => {
-    try {
-      localStorage.setItem(DECK_CACHE_STORAGE_KEY, JSON.stringify(cachedDeckIds))
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Failed to save deck cache to localStorage:', error)
-    }
-  }, [cachedDeckIds])
-
-  // Save deck data to localStorage whenever it changes
-  useEffect(() => {
-    try {
-      localStorage.setItem(
-        `${DECK_CACHE_STORAGE_KEY}-data`,
-        JSON.stringify(cachedDecksData),
-      )
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('Failed to save deck cache data to localStorage:', error)
-    }
-  }, [cachedDecksData])
-
-  const cachedDecks = useMemo(
-    () => cachedDecksData.filter((deck) => cachedDeckIds.includes(deck.id)),
-    [cachedDeckIds, cachedDecksData],
-  )
-
-  const addDeckToCache = (deckId, deckData) => {
-    setCachedDeckIds((prev) => {
-      if (prev.includes(deckId)) return prev
-      return [...prev, deckId]
-    })
-
-    // Store deck data if provided
-    if (deckData) {
-      setCachedDecksData((prev) => {
-        // Check if deck already exists
-        const existingIndex = prev.findIndex((d) => d.id === deckId)
-        if (existingIndex >= 0) {
-          // Update existing deck
-          const updated = [...prev]
-          updated[existingIndex] = deckData
-          return updated
+        if (Array.isArray(parsed)) {
+          return parsed
+            .filter(
+              (pair) => pair && typeof pair === 'object' && typeof pair.pairId !== 'undefined',
+            )
+            .map((pair) => ({
+              ...pair,
+              savedAt: pair.savedAt ?? new Date().toISOString(),
+            }))
         }
-        // Add new deck
-        return [...prev, deckData]
-      })
+      }
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Failed to load deck pairs from localStorage:', error)
     }
+    return []
+  })
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(DECK_PAIR_STORAGE_KEY, JSON.stringify(cachedPairs))
+    } catch (error) {
+      // eslint-disable-next-line no-console
+      console.error('Failed to save deck pairs to localStorage:', error)
+    }
+  }, [cachedPairs])
+
+  const addPairToCache = (pair) => {
+    if (!pair || typeof pair !== 'object' || !pair.pairId) {
+      return
+    }
+
+    setCachedPairs((prev) => {
+      const nextPair = {
+        ...pair,
+        savedAt: pair.savedAt ?? new Date().toISOString(),
+      }
+      const existingIndex = prev.findIndex((p) => p.pairId === nextPair.pairId)
+      if (existingIndex >= 0) {
+        const updated = [...prev]
+        updated[existingIndex] = {
+          ...updated[existingIndex],
+          ...nextPair,
+        }
+        return updated
+      }
+      return [...prev, nextPair]
+    })
   }
 
-  const removeDeckFromCache = (deckId) => {
-    setCachedDeckIds((prev) => prev.filter((id) => id !== deckId))
-    // Optionally remove deck data too (or keep it for potential re-add)
-    setCachedDecksData((prev) => prev.filter((deck) => deck.id !== deckId))
+  const removePairFromCache = (pairId) => {
+    setCachedPairs((prev) => prev.filter((pair) => pair.pairId !== pairId))
   }
 
   const clearCache = () => {
-    setCachedDeckIds([])
-    setCachedDecksData([])
+    setCachedPairs([])
   }
 
   const value = useMemo(
     () => ({
-      cachedDeckIds,
-      cachedDecks,
-      addDeckToCache,
-      removeDeckFromCache,
+      cachedPairs,
+      addPairToCache,
+      removePairFromCache,
       clearCache,
     }),
-    [cachedDeckIds, cachedDecks],
+    [cachedPairs],
   )
 
   return <DeckCacheContext.Provider value={value}>{children}</DeckCacheContext.Provider>

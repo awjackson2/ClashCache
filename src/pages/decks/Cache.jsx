@@ -1,29 +1,32 @@
 import SwimLane from '../../components/SwimLane'
 import { useDeckCache } from '../../state/DeckCacheContext.jsx'
-import { usePlayerTag } from '../../state/PlayerTagContext.jsx'
 import styles from './Cache.module.css'
 
-function groupDecksByCard(decks) {
+function groupPairsByCard(pairs) {
   const lanesMap = new Map()
 
-  decks.forEach((deck) => {
-    const { cards = [] } = deck
-    const seenInDeck = new Set()
+  pairs.forEach((pair) => {
+    const { originalDeck, optimizedDeck } = pair
+    const decksToIndex = [originalDeck, optimizedDeck].filter(
+      (deck) => deck && Array.isArray(deck.cards),
+    )
 
-    cards.forEach((card) => {
-      if (!card) return
+    const seenInPair = new Set()
 
-      const cardName = card.name || 'Unknown Card'
+    decksToIndex.forEach((deck) => {
+      deck.cards.forEach((card) => {
+        if (!card) return
 
-      // Avoid adding the same deck multiple times to one lane
-      if (seenInDeck.has(cardName)) return
-      seenInDeck.add(cardName)
+        const cardName = card.name || 'Unknown Card'
+        if (!cardName || seenInPair.has(cardName)) return
+        seenInPair.add(cardName)
 
-      if (!lanesMap.has(cardName)) {
-        lanesMap.set(cardName, { cardName, decks: [] })
-      }
+        if (!lanesMap.has(cardName)) {
+          lanesMap.set(cardName, { cardName, pairs: [] })
+        }
 
-      lanesMap.get(cardName).decks.push(deck)
+        lanesMap.get(cardName).pairs.push(pair)
+      })
     })
   })
 
@@ -31,16 +34,9 @@ function groupDecksByCard(decks) {
 }
 
 function Cache() {
-  const { cachedDecks } = useDeckCache()
-  const { playerTag, currentPlayer } = usePlayerTag()
+  const { cachedPairs, removePairFromCache } = useDeckCache()
 
-  const hasPlayerLevels =
-    Boolean(playerTag) &&
-    currentPlayer &&
-    Array.isArray(currentPlayer.cards) &&
-    currentPlayer.cards.length > 0
-
-  const swimLanes = groupDecksByCard(cachedDecks)
+  const swimLanes = groupPairsByCard(cachedPairs)
 
   return (
     <article className={styles.cacheRoot}>
@@ -51,10 +47,8 @@ function Cache() {
           <SwimLane
             key={lane.cardName}
             cardName={lane.cardName}
-            decks={lane.decks}
-            // Show levels when we have a player with cards; otherwise hide to
-            // avoid misleading defaults.
-            hideLevel={!hasPlayerLevels}
+            pairs={lane.pairs}
+            onRemovePair={removePairFromCache}
           />
         ))
       )}
@@ -63,4 +57,3 @@ function Cache() {
 }
 
 export default Cache
-

@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './SubNavBar.module.css'
@@ -6,6 +6,7 @@ import styles from './SubNavBar.module.css'
 function SubNavBar({ links, ariaLabel = 'Sub navigation' }) {
   const navigate = useNavigate()
   const location = useLocation()
+  const wrapperRef = useRef(null)
 
   const normalizedLinks = useMemo(() => {
     if (!Array.isArray(links)) {
@@ -45,8 +46,28 @@ function SubNavBar({ links, ariaLabel = 'Sub navigation' }) {
     return null
   }
 
+  useEffect(() => {
+    const updateHeight = () => {
+      const rect = wrapperRef.current?.getBoundingClientRect()
+      if (rect && typeof document !== 'undefined') {
+        const offset = Math.max(0, window.innerHeight - rect.top)
+        document.documentElement.style.setProperty('--active-subnav-height', `${Math.round(offset)}px`)
+      }
+    }
+
+    updateHeight()
+    window.addEventListener('resize', updateHeight)
+
+    return () => {
+      window.removeEventListener('resize', updateHeight)
+      if (typeof document !== 'undefined') {
+        document.documentElement.style.removeProperty('--active-subnav-height')
+      }
+    }
+  }, [])
+
   return (
-    <nav className={styles.wrapper} aria-label={ariaLabel}>
+    <nav ref={wrapperRef} className={styles.wrapper} aria-label={ariaLabel}>
       <div className={styles.items}>
         {normalizedLinks.map(({ label, path }) => {
           const isActive = activePath === path

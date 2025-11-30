@@ -32,6 +32,7 @@
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.12);
   padding: 0.45rem 0.9rem;
+  min-height: 44px;
   cursor: pointer;
   font: inherit;
   font-weight: 600;
@@ -59,5 +60,33 @@
 
 .label {
   font: inherit;
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    bottom: calc(env(safe-area-inset-bottom, 0.75rem) + 0.75rem);
+    padding: 0 0.75rem;
+  }
+
+  .items {
+    width: 100%;
+    gap: 0.35rem;
+    padding: 0.4rem;
+    backdrop-filter: blur(24px);
+  }
+
+  .itemButton {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.025em;
+  }
+
+  .itemButton[data-active='true'] {
+    transform: translateY(-0.5px);
+  }
+
+  .label {
+    font-size: inherit;
+  }
 }
 

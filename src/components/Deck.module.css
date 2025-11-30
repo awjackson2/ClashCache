@@ -48,3 +48,38 @@
 }
 
 
+@media (max-width: 768px) {
+  .deckRoot {
+    padding: 0.6rem 0.7rem;
+    border-radius: 16px;
+  }
+
+  .grid {
+    gap: 0.35rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .deckRoot {
+    padding: 0.45rem 0.55rem;
+    border-radius: 14px;
+  }
+
+  .title {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+
+  .grid {
+    gap: 0.3rem;
+  }
+
+  .empty {
+    width: 72px;
+    height: 90px;
+    border-radius: 10px;
+    font-size: 0.55rem;
+  }
+}
+
+

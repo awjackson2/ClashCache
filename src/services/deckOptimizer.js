@@ -277,11 +277,9 @@ function createHungarianOptimizer() {
 
     // Step 4: Build cost matrix
     // Initialize cost matrix with BIG as the default \"invalid\" cost.
-    const cost = Array.from({ length: numSlots }, () =>
-      Array(candidateNames.length).fill(BIG),
-    )
+    const cost = Array.from({ length: numSlots }, () => Array(candidateNames.length).fill(BIG))
 
-    let anyValid = false
+    const slotHasValidCandidate = Array(numSlots).fill(false)
 
     for (let slot = 0; slot < numSlots; slot += 1) {
       const origName = originalNames[slot]
@@ -317,7 +315,7 @@ function createHungarianOptimizer() {
           continue
         }
 
-        anyValid = true
+        slotHasValidCandidate[slot] = true
 
         const { stars, orderIdx } = info
 
@@ -349,9 +347,10 @@ function createHungarianOptimizer() {
       }
     }
 
-    // If there are no valid assignments at all, fall back to identity optimizer
-    if (!anyValid) {
-      return createIdentityOptimizer()(originalDeck, playerCards)
+    const allSlotsCovered = slotHasValidCandidate.every(Boolean)
+
+    if (!allSlotsCovered) {
+      return null
     }
 
     // Step 5: Run Hungarian algorithm
@@ -361,28 +360,15 @@ function createHungarianOptimizer() {
     const resultCards = []
     const replacements = []
     let totalScore = 0
+    let assignmentFailed = false
+    let championCount = 0
 
     for (let slot = 0; slot < numSlots; slot += 1) {
       const colIdx = colForRow[slot]
 
       if (colIdx == null || colIdx < 0 || colIdx >= candidateNames.length) {
-        // The assignment for this slot is invalid (out-of-bounds column).
-        // Fallback behavior: keep the original leaderboard card.
-        const originalName = originalNames[slot]
-        const originalLevel = playerLevels.get(originalName) || 0
-
-        replacements.push({
-          slot,
-          originalCard: originalName,
-          replacementCard: originalName,
-          wasReplaced: false,
-          originalLevel,
-          replacementLevel: originalLevel,
-          reason: 'Kept original card – no valid replacement available for this slot.',
-        })
-
-        resultCards.push({ ...deckCards[slot] })
-        continue
+        assignmentFailed = true
+        break
       }
 
       const candName = candidateNames[colIdx]
@@ -397,23 +383,8 @@ function createHungarianOptimizer() {
           : null
 
       if (!playerCard) {
-        // If we don't have metadata for the chosen candidate, keep the
-        // original leaderboard card to avoid rendering broken data.
-        const originalName = originalNames[slot]
-        const originalLevel = playerLevels.get(originalName) || 0
-
-        replacements.push({
-          slot,
-          originalCard: originalName,
-          replacementCard: originalName,
-          wasReplaced: false,
-          originalLevel,
-          replacementLevel: originalLevel,
-          reason: 'Kept original card – missing metadata for suggested replacement.',
-        })
-
-        resultCards.push({ ...deckCards[slot] })
-        continue
+        assignmentFailed = true
+        break
       }
 
       const originalCard = deckCards[slot] || {}
@@ -452,6 +423,11 @@ function createHungarianOptimizer() {
         reason,
       })
 
+      const resolvedRarity = (playerCard.rarity ?? originalCard.rarity ?? '').toLowerCase()
+      if (resolvedRarity === 'champion') {
+        championCount += 1
+      }
+
       resultCards.push({
         id: playerCard.id ?? originalCard.id,
         name: candName,
@@ -461,6 +437,10 @@ function createHungarianOptimizer() {
         evolutionImage:
           playerCard.iconUrls?.evolutionMedium ?? originalCard.evolutionImage ?? null,
       })
+    }
+
+    if (assignmentFailed || championCount > 1) {
+      return null
     }
 
     // Ensure card levels used for display go through the same normalization

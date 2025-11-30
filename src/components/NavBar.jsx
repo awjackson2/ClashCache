@@ -1,4 +1,11 @@
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { FaHome, FaTrophy, FaLayerGroup, FaCode } from 'react-icons/fa'
@@ -115,16 +122,33 @@ function NavBar({ links = DEFAULT_LINKS }) {
     moveHighlightToPath(activePath)
   }, [activePath, moveHighlightToPath])
 
+  const setActiveNavHeight = useCallback(() => {
+    if (typeof document === 'undefined') {
+      return
+    }
+    const rect = navContainerRef.current?.getBoundingClientRect()
+    if (!rect) {
+      return
+    }
+    document.documentElement.style.setProperty('--active-nav-height', `${Math.round(rect.bottom)}px`)
+  }, [])
+
   useLayoutEffect(() => {
+    setActiveNavHeight()
     updateHighlight()
-  }, [updateHighlight])
+  }, [setActiveNavHeight, updateHighlight])
 
   useEffect(() => {
     window.addEventListener('resize', updateHighlight)
+    window.addEventListener('resize', setActiveNavHeight)
     return () => {
       window.removeEventListener('resize', updateHighlight)
+      window.removeEventListener('resize', setActiveNavHeight)
+      if (typeof document !== 'undefined') {
+        document.documentElement.style.removeProperty('--active-nav-height')
+      }
     }
-  }, [updateHighlight])
+  }, [setActiveNavHeight, updateHighlight])
 
   return (
     <div className={styles.wrapper}>

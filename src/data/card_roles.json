@@ -1,0 +1,18 @@
+{
+  "spell": [
+    "Mirror", "Arrows", "Goblin Curse", "Rage", "Rocket", "Earthquake", "Barbarian Barrel",
+    "Vines", "Zap", "Lightning", "Fireball", "Giant Snowball", "Tornado", "The Log", "Poison", "Void",
+    "Freeze", "Royal Delivery", "Clone"
+  ],
+  "building": [
+    "Cannon", "Goblin Cage", "Goblin Hut", "Bomb Tower", "Tesla", "Elixir Collector",
+    "Inferno Tower", "Tombstone", "Barbarian Hut", "Furnace", "Mortar", "X-Bow"
+  ],
+  "wincon": [
+    "Giant", "Golem", "P.E.K.K.A", "Royal Giant", "Lava Hound", "Electro Giant",
+    "Goblin Giant", "Giant Skeleton", "Hog Rider", "Ram Rider", "Battle Ram", "Wall Breakers",
+    "Goblin Barrel", "Graveyard", "X-Bow", "Mortar", "Goblin Drill", "Miner", "Skeleton Barrel",
+    "Elixir Golem", "Royal Hogs", "Three Musketeers", "Balloon", "Sparky"
+  ]
+}
+

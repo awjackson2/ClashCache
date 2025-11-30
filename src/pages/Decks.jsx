@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Overlay from '../components/Overlay'
 import SubNavBar from '../components/SubNavBar'
+import styles from './Decks.module.css'
 
 const RIGHT_OVERLAY_POINTS = [
   { x: 60, y: 0 },
@@ -22,11 +23,13 @@ const SUB_LINKS = [
 
 function Decks() {
   return (
-    <section style={{ paddingTop: '80px' }}>
+    <section className={styles.section}>
       <SubNavBar links={SUB_LINKS} ariaLabel="Decks sub navigation" />
-      <div>
+      <div className={styles.content}>
         <Outlet />
       </div>
+      <Overlay points={LEFT_OVERLAY_POINTS} className={`${styles.overlay} mobile-hidden`} />
+      <Overlay points={RIGHT_OVERLAY_POINTS} className={`${styles.overlay} mobile-hidden`} />
     </section>
   )
 }

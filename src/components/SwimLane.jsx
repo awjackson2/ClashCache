@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types'
-import Deck from './Deck'
+import DeckOptPair from './DeckOptPair'
 import styles from './SwimLane.module.css'
 
-function SwimLane({ cardName, decks, hideLevel }) {
+function SwimLane({ cardName, pairs, onRemovePair }) {
   return (
     <section className={styles.swimLane} aria-label={`Decks containing ${cardName}`}>
       <h3 className={styles.laneTitle}>{cardName}</h3>
       <div className={styles.decksRow}>
-        {decks.map((deck) => (
-          <div key={deck.id} className={styles.deckWrapper}>
-            <Deck
-              title={deck.name || `Deck ${deck.id}`}
-              cards={deck.cards}
-              hideLevel={hideLevel}
+        {pairs.map((pair) => (
+          <div key={pair.pairId} className={styles.deckWrapper}>
+            <DeckOptPair
+              originalDeck={pair.originalDeck}
+              optimizedDeck={pair.optimizedDeck}
+              optimizationScore={pair.optimizationScore ?? undefined}
+              ownerName={pair.ownerName}
+              isSaved
+              onRemove={onRemovePair ? () => onRemovePair(pair.pairId) : undefined}
             />
           </div>
         ))}
@@ -21,22 +24,29 @@ function SwimLane({ cardName, decks, hideLevel }) {
   )
 }
 
+const deckShape = PropTypes.shape({
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  name: PropTypes.string,
+  cards: PropTypes.arrayOf(PropTypes.object),
+})
+
 SwimLane.propTypes = {
   cardName: PropTypes.string.isRequired,
-  decks: PropTypes.arrayOf(
+  pairs: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-      name: PropTypes.string,
-      cards: PropTypes.array.isRequired,
+      pairId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      originalDeck: deckShape.isRequired,
+      optimizedDeck: deckShape,
+      optimizationScore: PropTypes.number,
+      ownerName: PropTypes.string,
     }),
   ).isRequired,
-  hideLevel: PropTypes.bool,
+  onRemovePair: PropTypes.func,
 }
 
 SwimLane.defaultProps = {
-  hideLevel: false,
+  onRemovePair: undefined,
 }
 
 export default SwimLane
-
 
