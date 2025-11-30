@@ -434,8 +434,7 @@ function createHungarianOptimizer() {
         level,
         rarity: playerCard.rarity ?? originalCard.rarity,
         image: playerCard.iconUrls?.medium ?? originalCard.image ?? '',
-        evolutionImage:
-          playerCard.iconUrls?.evolutionMedium ?? originalCard.evolutionImage ?? null,
+        evolutionImage: playerCard.iconUrls?.evolutionMedium ?? null,
       })
     }
 
