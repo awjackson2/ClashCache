@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import DeckOptPair from './DeckOptPair'
+import deckOptPairStyles from './DeckOptPair.module.css'
 import styles from './SwimLane.module.css'
 
 function SwimLane({ cardName, pairs, onRemovePair }) {
@@ -16,6 +17,7 @@ function SwimLane({ cardName, pairs, onRemovePair }) {
               ownerName={pair.ownerName}
               isSaved
               onRemove={onRemovePair ? () => onRemovePair(pair.pairId) : undefined}
+              className={deckOptPairStyles.compact}
             />
           </div>
         ))}

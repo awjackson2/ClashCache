@@ -12,9 +12,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter basename="/p58/">
       <PlayerTagProvider>
         <DeckCacheProvider>
-          <div className="app-shell">
-            <App />
-          </div>
+          <App />
         </DeckCacheProvider>
       </PlayerTagProvider>
     </BrowserRouter>

@@ -1,21 +1,24 @@
 .swimLane {
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: var(--spacing-lg) var(--spacing-xl);
   margin: 0;
   box-sizing: border-box;
 }
 
 .laneTitle {
-  margin: 0 0 0.75rem;
-  font-size: 1.1rem;
+  margin: 0 0 var(--spacing-md);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-primary);
 }
 
 .decksRow {
   display: flex;
   flex-wrap: nowrap;
-  gap: 1rem;
+  gap: var(--spacing-lg);
   overflow-x: auto;
-  padding-bottom: 0.5rem;
+  padding-bottom: var(--spacing-sm);
+  -webkit-overflow-scrolling: touch;
 }
 
 .decksRow::-webkit-scrollbar {
@@ -23,12 +26,12 @@
 }
 
 .decksRow::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.8);
+  background: var(--color-bg-tertiary);
 }
 
 .decksRow::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.9);
-  border-radius: 999px;
+  background: var(--color-text-muted);
+  border-radius: var(--radius-full);
 }
 
 .deckWrapper {

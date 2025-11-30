@@ -29,25 +29,25 @@ function Overview() {
     <section className={`${styles.section}`}>
       <div className={styles.contentColumn}>
         <div className={styles.contentInner}>
-          <h1 className="text-center text-md-start">{headingText}</h1>
-          <p className="lead text-center text-md-start">Your Clash Royale companion app</p>
+          <h1 className={styles.heading}>{headingText}</h1>
+          <p className={styles.lead}>Your Clash Royale companion app</p>
           <form onSubmit={handlePlayerTagSubmit} className={styles.form}>
-            <label htmlFor="player-tag-input" className="form-label text-light">
+            <label htmlFor="player-tag-input" className={styles.label}>
               Player Tag
             </label>
             <input
               id="player-tag-input"
               type="text"
-              className="form-control"
+              className={styles.input}
               placeholder="Enter your player tag (e.g. #90YY2G00)"
               value={playerTag}
               onChange={handlePlayerTagChange}
             />
-            <button type="submit" className="btn btn-primary mt-2" disabled={isLoadingPlayer}>
+            <button type="submit" className={styles.submitButton} disabled={isLoadingPlayer}>
               {isLoadingPlayer ? 'Loading...' : 'Load Player'}
             </button>
             {playerError ? (
-              <div className="text-danger mt-2" style={{ fontSize: '0.85rem' }}>
+              <div className={styles.error}>
                 {playerError}
               </div>
             ) : null}

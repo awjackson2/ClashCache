@@ -1,6 +1,5 @@
-/* Global theme tokens for overlays (consider moving to a shared theme file) */
+/* Overlay animation variables */
 :root {
-  --overlay-bg: rgba(7, 27, 59, 0.18);
   --overlay-animation-duration: 800ms;
   --overlay-animation-easing: cubic-bezier(0.24, 0.8, 0.35, 1);
   --overlay-animation-delay: 0ms;
@@ -17,6 +16,7 @@
   height: 100%;
   overflow: hidden;
   pointer-events: none;
+  isolation: isolate;
 }
 
 .overlay {
@@ -24,13 +24,13 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  background: var(--overlay-bg);
+  background: var(--color-bg-overlay);
   clip-path: var(--overlay-clip, polygon(0 0, 100% 0, 100% 100%, 0 100%));
   -webkit-clip-path: var(--overlay-clip, polygon(0 0, 100% 0, 100% 100%, 0 100%));
   overflow: hidden;
   pointer-events: none;
   display: block;
-  z-index: var(--overlay-z, 1);
+  z-index: var(--overlay-z, 5);
   will-change: transform, opacity;
   transition:
     transform var(--overlay-duration, var(--overlay-animation-duration)) var(--overlay-easing, var(--overlay-animation-easing))

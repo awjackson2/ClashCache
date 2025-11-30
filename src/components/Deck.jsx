@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Card from './Card'
 import styles from './Deck.module.css'
 
-function Deck({ title, cards, hideLevel, onCardClick, variant }) {
+function Deck({ title, cards, hideLevel, onCardClick, variant, replacedCardIndices }) {
   const safeCards = Array.isArray(cards) ? cards.slice(0, 8) : []
 
   const paddedCards =
@@ -20,6 +20,13 @@ function Deck({ title, cards, hideLevel, onCardClick, variant }) {
       onCardClick(card)
     }
   }
+
+  // Convert replacedCardIndices to Set if it's not already
+  const replacedSet = replacedCardIndices instanceof Set 
+    ? replacedCardIndices 
+    : Array.isArray(replacedCardIndices) 
+      ? new Set(replacedCardIndices) 
+      : new Set()
 
   return (
     <section className={rootClassName} aria-label={title || 'Deck'}>
@@ -42,6 +49,8 @@ function Deck({ title, cards, hideLevel, onCardClick, variant }) {
               ? evolutionImage
               : image
 
+          const isReplaced = replacedSet.has(index)
+
           return (
             <div key={id} className={styles.cardCell}>
               <Card
@@ -53,6 +62,7 @@ function Deck({ title, cards, hideLevel, onCardClick, variant }) {
                 hideLevel={hideLevel}
                 onClick={handleCardClick}
                 variant={variant}
+                isReplaced={isReplaced}
               />
             </div>
           )
@@ -76,6 +86,10 @@ Deck.propTypes = {
   hideLevel: PropTypes.bool,
   onCardClick: PropTypes.func,
   variant: PropTypes.oneOf(['default', 'optimized']),
+  replacedCardIndices: PropTypes.oneOfType([
+    PropTypes.instanceOf(Set),
+    PropTypes.arrayOf(PropTypes.number),
+  ]),
 }
 
 Deck.defaultProps = {
@@ -83,6 +97,7 @@ Deck.defaultProps = {
   hideLevel: false,
   onCardClick: undefined,
   variant: 'default',
+  replacedCardIndices: undefined,
 }
 
 export default Deck

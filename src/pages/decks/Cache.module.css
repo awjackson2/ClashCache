@@ -11,17 +11,19 @@
 
 .title {
   margin: 0;
-  font-size: 1.75rem;
+  font-size: var(--font-size-2xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
 }
 
 .subtitle {
-  margin: 0.25rem 0 0;
-  color: #6b7280;
-  font-size: 0.95rem;
+  margin: var(--spacing-xs) 0 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
 }
 
 .emptyState {
-  margin-top: 1rem;
-  color: #6b7280;
+  margin-top: var(--spacing-lg);
+  color: var(--color-text-muted);
 }
 

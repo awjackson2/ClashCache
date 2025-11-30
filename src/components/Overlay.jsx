@@ -83,9 +83,11 @@ function Overlay({
     positionStyle.top = formatLength(initialPosition.y)
   }
 
+  const resolvedZIndex = zIndex ?? 5
+
   const overlayStyle = {
     '--overlay-clip': clipPath,
-    '--overlay-z': zIndex ?? 1,
+    '--overlay-z': resolvedZIndex,
     '--overlay-opacity': resolvedOpacity,
     position,
     width: formatLength(width) ?? '100%',
@@ -95,31 +97,32 @@ function Overlay({
     clipPath,
     WebkitClipPath: clipPath,
     opacity: resolvedOpacity,
+    zIndex: resolvedZIndex,
     ...positionStyle,
     ...style,
   }
 
-  const overlayNode = (
-    <div className={styles.overlayRoot}>
-      <div
-        className={[styles.overlay, className].filter(Boolean).join(' ')}
-        style={overlayStyle}
-        aria-hidden="true"
-        role="presentation"
-        {...rest}
-      >
-        <div className={styles.overlayContent}>{children}</div>
-      </div>
+  const overlayElement = (
+    <div
+      className={[styles.overlay, className].filter(Boolean).join(' ')}
+      style={overlayStyle}
+      aria-hidden="true"
+      role="presentation"
+      {...rest}
+    >
+      <div className={styles.overlayContent}>{children}</div>
     </div>
   )
 
-  const resolvedPortalTarget = portalTarget ?? (typeof document !== 'undefined' ? document.body : null)
+  // Only use portal if explicitly requested
+  const resolvedPortalTarget = portalTarget
 
   if (resolvedPortalTarget) {
-    return createPortal(overlayNode, resolvedPortalTarget)
+    return createPortal(overlayElement, resolvedPortalTarget)
   }
 
-  return overlayNode
+  // Render in normal DOM flow without portal
+  return overlayElement
 }
 
 Overlay.propTypes = {

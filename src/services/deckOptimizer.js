@@ -356,7 +356,38 @@ function createHungarianOptimizer() {
     // Step 5: Run Hungarian algorithm
     const colForRow = hungarianMinimize(cost)
 
-    // Step 6: Build result deck and detailed replacement info
+    // Step 6: Calculate min/max possible scores for this player
+    // This allows us to normalize the score relative to the player's available card levels
+    let minPossibleScore = 0
+    let maxPossibleScore = 0
+    
+    for (let slot = 0; slot < numSlots; slot += 1) {
+      const origName = originalNames[slot]
+      let minLevel = Infinity
+      let maxLevel = 0
+      
+      // Find min and max levels among all valid candidates for this slot
+      for (let cIdx = 0; cIdx < candidateNames.length; cIdx += 1) {
+        const candName = candidateNames[cIdx]
+        const info = slotCandidateInfo(origName, candName)
+        if (!info) continue
+        
+        const level = playerLevels.get(candName) || 0
+        if (level <= 0) continue
+        
+        minLevel = Math.min(minLevel, level)
+        maxLevel = Math.max(maxLevel, level)
+      }
+      
+      if (minLevel !== Infinity && maxLevel > 0) {
+        // Minimum: worst compatibility (1 star) + lowest level
+        minPossibleScore += (1 + minLevel) / 18.0
+        // Maximum: best compatibility (3 stars) + highest level
+        maxPossibleScore += (3 + maxLevel) / 18.0
+      }
+    }
+
+    // Step 7: Build result deck and detailed replacement info
     const resultCards = []
     const replacements = []
     let totalScore = 0
@@ -447,10 +478,24 @@ function createHungarianOptimizer() {
     // scoring logic above based on raw playerLevels.
     const normalizedCards = mapCardLevels(resultCards, playerCards)
 
+    // Normalize the score relative to the player's available card levels
+    // This ensures players with lower-level cards can still get high ratings
+    // if the optimization is good relative to their available options
+    let normalizedScore = totalScore
+    if (maxPossibleScore > minPossibleScore) {
+      // Normalize to 0-1 range, then scale to 0-8
+      const normalizedRatio = (totalScore - minPossibleScore) / (maxPossibleScore - minPossibleScore)
+      normalizedScore = normalizedRatio * 8.0
+    } else if (maxPossibleScore > 0) {
+      // Edge case: all slots have same min/max, use absolute score scaled to 8
+      // This shouldn't happen in practice, but handle it gracefully
+      normalizedScore = (totalScore / maxPossibleScore) * 8.0
+    }
+
     return {
       ...originalDeck,
       cards: normalizedCards,
-      optimizationScore: totalScore,
+      optimizationScore: normalizedScore,
       replacements,
     }
   }

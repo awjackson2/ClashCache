@@ -1,24 +1,24 @@
 .deckRoot {
   display: inline-flex;
   flex-direction: column;
-  padding: 0.75rem 0.9rem;
-  border-radius: 18px;
-  background: radial-gradient(circle at 0% 0%, #111827, #020617);
-  border: 1px solid rgba(148, 163, 184, 0.5);
+  padding: var(--spacing-md) var(--spacing-md);
+  border-radius: var(--radius-lg);
+  background: radial-gradient(circle at 0% 0%, var(--color-bg-primary), var(--color-bg-primary));
+  border: 1px solid var(--color-border-primary);
 }
 
 .deckRootOptimized {
-  background: radial-gradient(circle at 0% 0%, #4c1d95, #020617);
+  background: radial-gradient(circle at 0% 0%, #4c1d95, var(--color-bg-primary));
   border-color: rgba(167, 139, 250, 0.8);
 }
 
 .title {
-  font-size: 0.8rem;
+  font-size: var(--font-size-xs);
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(226, 232, 240, 0.9);
-  margin-bottom: 0.4rem;
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
 }
 
 .grid {
@@ -37,21 +37,21 @@
 .empty {
   width: 96px;
   height: 120px;
-  border-radius: 12px;
-  border: 2px dashed rgba(75, 85, 99, 0.8);
-  background: radial-gradient(circle at 20% 0%, #020617, #111827);
+  border-radius: var(--radius-md);
+  border: 2px dashed var(--color-border-primary);
+  background: radial-gradient(circle at 20% 0%, var(--color-bg-primary), var(--color-bg-primary));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.65rem;
-  color: rgba(148, 163, 184, 0.9);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
 }
 
 
 @media (max-width: 768px) {
   .deckRoot {
-    padding: 0.6rem 0.7rem;
-    border-radius: 16px;
+    padding: var(--spacing-sm) var(--spacing-sm);
+    border-radius: var(--radius-lg);
   }
 
   .grid {
@@ -61,12 +61,12 @@
 
 @media (max-width: 480px) {
   .deckRoot {
-    padding: 0.45rem 0.55rem;
-    border-radius: 14px;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
   }
 
   .title {
-    font-size: 0.7rem;
+    font-size: var(--font-size-xs);
     letter-spacing: 0.1em;
   }
 
@@ -77,8 +77,8 @@
   .empty {
     width: 72px;
     height: 90px;
-    border-radius: 10px;
-    font-size: 0.55rem;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
   }
 }
 

@@ -2,64 +2,82 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1.25rem;
-  border-radius: 20px;
-  background: radial-gradient(circle at 0% 0%, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.96));
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  box-shadow:
-    0 18px 34px rgba(0, 0, 0, 0.35),
-    inset 0 0 0 1px rgba(148, 163, 184, 0.18);
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl);
+  border-radius: var(--radius-xl);
+  background: radial-gradient(circle at 0% 0%, var(--color-bg-secondary), var(--color-bg-primary));
+  border: 1px solid var(--color-border-primary);
+  box-shadow: var(--shadow-xl), inset 0 0 0 1px var(--color-border-tertiary);
   width: min(960px, 100%);
+}
+
+.compact {
+  padding: var(--spacing-md);
+  gap: var(--spacing-sm);
+  border-radius: var(--radius-md);
+  width: 600px;
+  box-shadow: var(--shadow-md), inset 0 0 0 1px var(--color-border-tertiary);
 }
 
 .deckArea {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1rem;
+  gap: var(--spacing-lg);
+}
+
+.compact .deckArea {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--spacing-sm);
 }
 
 .deckColumn {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
   align-items: center;
   text-align: center;
 }
 
+.compact .deckColumn {
+  gap: var(--spacing-xs);
+}
+
 .deckLabel {
-  font-size: 0.75rem;
+  font-size: var(--font-size-xs);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(226, 232, 240, 0.8);
+  color: var(--color-text-secondary);
 }
 
 .deckLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(148, 163, 184, 0.35);
-  background: rgba(15, 23, 42, 0.65);
-  color: rgba(226, 232, 240, 0.92);
-  font-size: 0.78rem;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-bg-card);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    border-color 0.18s ease,
-    background 0.18s ease;
+  transition: all 0.2s ease;
+  min-height: 44px;
+}
+
+.compact .deckLink {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  min-height: 36px;
 }
 
 .deckLink:hover {
   transform: translateY(-1px);
-  border-color: rgba(99, 102, 241, 0.6);
-  background: rgba(30, 64, 175, 0.85);
-  box-shadow: 0 12px 24px rgba(30, 64, 175, 0.35);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  box-shadow: var(--shadow-lg);
 }
 
 .deckLink:active {
@@ -72,15 +90,20 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  border-top: 1px solid rgba(148, 163, 184, 0.25);
-  padding-top: 0.75rem;
+  gap: var(--spacing-md);
+  border-top: 1px solid var(--color-border-secondary);
+  padding-top: var(--spacing-md);
+}
+
+.compact .footer {
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
 }
 
 .footerActions {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: var(--spacing-sm);
   flex-wrap: wrap;
   justify-content: flex-end;
 }
@@ -88,49 +111,119 @@
 .meta {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: var(--spacing-xs);
 }
 
 .ownerLabel {
   font-weight: 600;
-  font-size: 0.95rem;
-  color: rgba(248, 250, 252, 0.95);
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+}
+
+.compact .ownerLabel {
+  font-size: var(--font-size-sm);
 }
 
 .score {
-  font-size: 0.82rem;
-  color: rgba(148, 163, 184, 0.95);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.compact .score {
+  font-size: var(--font-size-xs);
+}
+
+.scoreLabel {
+  font-weight: 500;
+}
+
+.starRating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  line-height: 1;
+}
+
+.star {
+  color: #fbbf24;
+  font-size: 1rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.starHalf {
+  position: relative;
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  line-height: 1;
+}
+
+.starHalfFilled {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fbbf24;
+  font-size: 1rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+  overflow: hidden;
+}
+
+.starHalfEmpty {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: rgba(148, 163, 184, 0.4);
+  font-size: 1rem;
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+}
+
+.starEmpty {
+  color: rgba(148, 163, 184, 0.4);
+  font-size: 1rem;
 }
 
 .actionButton {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  justify-content: center;
+  gap: var(--spacing-xs);
   border: none;
-  border-radius: 999px;
-  padding: 0.55rem 1.2rem;
-  font-size: 0.9rem;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-base);
   font-weight: 600;
   cursor: pointer;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  transition: all 0.2s ease;
+  min-height: 44px;
 }
 
 .actionButton svg {
-  font-size: 1.1rem;
+  font-size: var(--font-size-lg);
+}
+
+.compact .actionButton {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  min-height: 36px;
+}
+
+.compact .actionButton svg {
+  font-size: var(--font-size-sm);
 }
 
 .actionButtonSave {
-  background: linear-gradient(135deg, #fbbf24, #f97316);
-  color: #0f172a;
-  box-shadow: 0 15px 30px rgba(251, 191, 36, 0.35);
+  background: linear-gradient(135deg, var(--color-warning), var(--color-warning-hover));
+  color: var(--color-bg-primary);
+  box-shadow: var(--shadow-lg);
 }
 
 .actionButtonSave:hover {
   transform: translateY(-1px);
-  box-shadow: 0 18px 34px rgba(251, 191, 36, 0.45);
+  box-shadow: var(--shadow-xl);
 }
 
 .actionButtonSave:active {
@@ -138,14 +231,14 @@
 }
 
 .actionButtonSaved {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: #f8fafc;
-  box-shadow: 0 15px 30px rgba(34, 197, 94, 0.35);
+  background: linear-gradient(135deg, var(--color-success), var(--color-success-hover));
+  color: var(--color-text-primary);
+  box-shadow: var(--shadow-lg);
 }
 
 .actionButtonSaved:hover {
   transform: translateY(-1px);
-  box-shadow: 0 18px 34px rgba(34, 197, 94, 0.45);
+  box-shadow: var(--shadow-xl);
 }
 
 .actionButton:disabled {
@@ -156,18 +249,18 @@
 }
 
 .savedBadge {
-  padding: 0.3rem 0.75rem;
-  border-radius: 999px;
-  background: rgba(16, 185, 129, 0.12);
-  color: rgba(16, 185, 129, 0.9);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-full);
+  background: var(--color-success-light);
+  color: var(--color-success-text);
   font-weight: 600;
-  font-size: 0.78rem;
+  font-size: var(--font-size-xs);
 }
 
 @media (max-width: 768px) {
   .pairCard {
-    padding: 1rem;
-    gap: 0.9rem;
+    padding: var(--spacing-lg);
+    gap: var(--spacing-md);
   }
 
   .deckArea {
@@ -189,37 +282,40 @@
   .actionButton {
     width: 100%;
     justify-content: center;
+    min-height: 44px;
   }
 }
 
 @media (max-width: 480px) {
   .pairCard {
-    padding: 0.85rem;
-    border-radius: 16px;
-    gap: 0.8rem;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    gap: var(--spacing-sm);
   }
 
   .ownerLabel {
-    font-size: 0.9rem;
+    font-size: var(--font-size-sm);
   }
 
   .score {
-    font-size: 0.78rem;
+    font-size: var(--font-size-xs);
   }
 
   .deckLabel {
-    font-size: 0.7rem;
+    font-size: var(--font-size-xs);
   }
 
   .deckLink {
     width: 100%;
-    font-size: 0.75rem;
-    padding: 0.4rem 0.85rem;
+    font-size: var(--font-size-xs);
+    padding: var(--spacing-xs) var(--spacing-md);
+    min-height: 44px;
   }
 
   .actionButton {
-    padding: 0.5rem 1rem;
-    font-size: 0.86rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-sm);
+    min-height: 44px;
   }
 }
 

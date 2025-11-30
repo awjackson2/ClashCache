@@ -1,8 +1,6 @@
-import { Container } from 'react-bootstrap'
 import { Outlet } from 'react-router-dom'
 import Overlay from '../components/Overlay'
 import SubNavBar from '../components/SubNavBar'
-import styles from './Home.module.css'
 
 const HOME_SUB_LINKS = [
   { label: 'Overview', path: '/' },
@@ -11,13 +9,13 @@ const HOME_SUB_LINKS = [
 
 function Home() {
   return (
-    <div className={styles.wrapper}>
+    <div>
       <SubNavBar links={HOME_SUB_LINKS} ariaLabel="Home sub navigation" />
-      <div className={styles.content}>
+      <div>
         <Outlet />
       </div>
       <Overlay
-        className={`${styles.overlay} mobile-hidden`}
+        className="mobile-hidden"
         points={[
           { x: 60, y: 0 },
           { x: 100, y: 0 },

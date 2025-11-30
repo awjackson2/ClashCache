@@ -95,9 +95,92 @@ function resolveOwnerName(deck) {
     deck?.ownerName ??
     deck?.player?.name ??
     deck?.playerName ??
+    deck?.playerTag ??
     deck?.owner ??
-    'Unknown battler'
+    null
   )
+}
+
+/**
+ * Convert optimization score (out of 8) to a 5-star rating with half stars
+ * @param {number} score - Score out of 8
+ * @returns {number} - Number of stars (0-5, with 0.5 increments)
+ */
+function scoreToStars(score) {
+  if (typeof score !== 'number' || !Number.isFinite(score)) {
+    return 0
+  }
+  
+  // Convert score (0-8) to stars (0-5)
+  const stars = (score / 8) * 5
+  
+  // Round to nearest 0.5
+  return Math.round(stars * 2) / 2
+}
+
+/**
+ * Render star rating component
+ */
+function StarRating({ stars }) {
+  const fullStars = Math.floor(stars)
+  const hasHalfStar = stars % 1 >= 0.5
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0)
+  
+  return (
+    <span className={styles.starRating} aria-label={`${stars} out of 5 stars`}>
+      {Array.from({ length: fullStars }, (_, i) => (
+        <span key={`full-${i}`} className={styles.star} aria-hidden="true">★</span>
+      ))}
+      {hasHalfStar && (
+        <span className={styles.starHalf} aria-hidden="true">
+          <span className={styles.starHalfFilled}>★</span>
+          <span className={styles.starHalfEmpty}>★</span>
+        </span>
+      )}
+      {Array.from({ length: emptyStars }, (_, i) => (
+        <span key={`empty-${i}`} className={styles.starEmpty} aria-hidden="true">★</span>
+      ))}
+    </span>
+  )
+}
+
+StarRating.propTypes = {
+  stars: PropTypes.number.isRequired,
+}
+
+/**
+ * Identify which cards in the optimized deck were replaced
+ * by comparing with the original deck at each position
+ */
+function identifyReplacedCards(originalCards, optimizedCards) {
+  if (!Array.isArray(originalCards) || !Array.isArray(optimizedCards)) {
+    return new Set()
+  }
+
+  const replacedIndices = new Set()
+  
+  // Compare cards at each position
+  for (let i = 0; i < Math.min(originalCards.length, optimizedCards.length); i++) {
+    const originalCard = originalCards[i]
+    const optimizedCard = optimizedCards[i]
+    
+    if (!originalCard || !optimizedCard) {
+      if (originalCard !== optimizedCard) {
+        replacedIndices.add(i)
+      }
+      continue
+    }
+    
+    // Compare by card ID (try multiple possible ID fields)
+    const originalId = originalCard.id || originalCard.cardID || originalCard.cardId || originalCard.clashId || originalCard.meshId
+    const optimizedId = optimizedCard.id || optimizedCard.cardID || optimizedCard.cardId || optimizedCard.clashId || optimizedCard.meshId
+    
+    if (originalId !== optimizedId) {
+      replacedIndices.add(i)
+    }
+  }
+  
+  return replacedIndices
 }
 
 function DeckOptPair({
@@ -110,8 +193,19 @@ function DeckOptPair({
   onRemove,
   className,
 }) {
-  const resolvedOwner = ownerName || resolveOwnerName(originalDeck)
+  // Always use the original deck's owner from the leaderboard deck
+  // Ignore ownerName prop if it's "Unknown battler" - prefer original deck's owner
+  const originalOwner = resolveOwnerName(originalDeck)
+  const resolvedOwner = 
+    (ownerName && ownerName !== 'Unknown battler') 
+      ? ownerName 
+      : originalOwner
   const showOptimized = Boolean(optimizedDeck && Array.isArray(optimizedDeck.cards))
+  
+  // Calculate star rating from optimization score
+  const starRating = typeof optimizationScore === 'number' 
+    ? scoreToStars(optimizationScore) 
+    : null
   const handleAction = () => {
     if (isSaved && onRemove) {
       onRemove()
@@ -122,6 +216,11 @@ function DeckOptPair({
 
   const originalDeckLink = buildDeckLink(originalDeck)
   const optimizedDeckLink = showOptimized ? buildDeckLink(optimizedDeck) : null
+
+  // Identify which cards were replaced in the optimized deck
+  const replacedCardIndices = showOptimized
+    ? identifyReplacedCards(originalDeck?.cards ?? [], optimizedDeck.cards)
+    : new Set()
 
   const actionLabel = isSaved ? 'Remove from cache' : 'Save to cache'
   const actionDisabled = (!isSaved && !onSave) || (isSaved && !onRemove)
@@ -146,7 +245,12 @@ function DeckOptPair({
         {showOptimized ? (
           <section className={styles.deckColumn} aria-label="Optimized deck">
             <span className={styles.deckLabel}>Optimized for you</span>
-            <Deck title={null} cards={optimizedDeck.cards} variant="optimized" />
+            <Deck 
+              title={null} 
+              cards={optimizedDeck.cards} 
+              variant="optimized"
+              replacedCardIndices={replacedCardIndices}
+            />
             {optimizedDeckLink ? (
               <a
                 className={styles.deckLink}
@@ -163,12 +267,15 @@ function DeckOptPair({
 
       <footer className={styles.footer}>
         <div className={styles.meta}>
-          <span className={styles.ownerLabel} aria-label="Deck owner">
-            {resolvedOwner}
-          </span>
-          {typeof optimizationScore === 'number' ? (
-            <span className={styles.score} aria-label="Optimization score">
-              Rating: {optimizationScore.toFixed(3)}
+          {resolvedOwner && (
+            <span className={styles.ownerLabel} aria-label="Deck owner">
+              {resolvedOwner}
+            </span>
+          )}
+          {starRating !== null ? (
+            <span className={styles.score} aria-label="Optimization rating">
+              <span className={styles.scoreLabel}>Optimization Rating:</span>
+              <StarRating stars={starRating} />
             </span>
           ) : null}
         </div>

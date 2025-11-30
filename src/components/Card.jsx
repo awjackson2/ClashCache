@@ -13,7 +13,7 @@ const RARITY_LEVEL_BONUS = {
   champion: 10,
 }
 
-function Card({ id, image, level, name, rarity, hideLevel, onClick, variant }) {
+function Card({ id, image, level, name, rarity, hideLevel, onClick, variant, isReplaced }) {
   const handleClick = () => {
     if (typeof onClick === 'function') {
       onClick({ id, image, level, name, rarity })
@@ -25,15 +25,17 @@ function Card({ id, image, level, name, rarity, hideLevel, onClick, variant }) {
   const rarityKey = typeof rarity === 'string' ? rarity.toLowerCase() : undefined
   const rarityBonus = RARITY_LEVEL_BONUS[rarityKey] ?? 0
   const displayLevel = Math.max(1, baseLevel + rarityBonus)
-  const rootClassName =
-    variant === 'optimized'
-      ? `${styles.cardRoot} ${styles.cardRootOptimized}`
-      : styles.cardRoot
+  
+  const classNames = [
+    styles.cardRoot,
+    variant === 'optimized' ? styles.cardRootOptimized : '',
+    isReplaced ? styles.cardRootReplaced : '',
+  ].filter(Boolean).join(' ')
 
   return (
     <button
       type="button"
-      className={rootClassName}
+      className={classNames}
       onClick={handleClick}
       aria-label={hideLevel ? displayName : `${displayName}, level ${displayLevel}`}
     >
@@ -64,6 +66,7 @@ Card.propTypes = {
   hideLevel: PropTypes.bool,
   onClick: PropTypes.func,
   variant: PropTypes.oneOf(['default', 'optimized']),
+  isReplaced: PropTypes.bool,
 }
 
 Card.defaultProps = {
@@ -74,6 +77,7 @@ Card.defaultProps = {
   hideLevel: false,
   onClick: undefined,
   variant: 'default',
+  isReplaced: false,
 }
 
 export default Card

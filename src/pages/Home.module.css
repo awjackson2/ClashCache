@@ -1,16 +1,3 @@
-.wrapper {
-  position: relative;
-  min-height: calc(100dvh - var(--nav-offset, 0px) - var(--subnav-offset, 0px));
-  display: flex;
-  flex-direction: column;
-}
-
-.content {
-  flex: 1 1 auto;
-  position: relative;
-  z-index: 1;
-}
-
 .overlay {
   pointer-events: none;
 }

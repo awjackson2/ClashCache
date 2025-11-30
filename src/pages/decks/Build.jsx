@@ -92,7 +92,6 @@ function Build() {
   const [currentDeck, setCurrentDeck] = useState([]) // Array of card names
   const [deckbuilder, setDeckbuilder] = useState(null)
   const [suggestions, setSuggestions] = useState([])
-  const [deckScore, setDeckScore] = useState(null)
 
   // Memoize playerCards to prevent infinite loops in useEffect
   const playerCards = useMemo(() => {
@@ -167,22 +166,6 @@ function Build() {
     } catch (error) {
       console.error('Failed to get suggestions:', error)
       setSuggestions([])
-    }
-  }, [deckbuilder, currentDeck, hasPlayerTag, playerCards])
-
-  // Calculate deck score when deck changes
-  useEffect(() => {
-    if (!deckbuilder || !hasPlayerTag || !playerCards.length || currentDeck.length === 0) {
-      setDeckScore(null)
-      return
-    }
-
-    try {
-      const score = deckbuilder.scoreDeck(currentDeck, playerCards)
-      setDeckScore(score)
-    } catch (error) {
-      console.error('Failed to score deck:', error)
-      setDeckScore(null)
     }
   }, [deckbuilder, currentDeck, hasPlayerTag, playerCards])
 
@@ -322,12 +305,12 @@ function Build() {
       pairId: `built-${Date.now()}`,
       originalDeck: deckObject,
       optimizedDeck: null,
-      optimizationScore: deckScore,
+      optimizationScore: null,
       savedAt: new Date().toISOString(),
     }
 
     addPairToCache(pair)
-  }, [isDeckComplete, currentDeckCards, deckScore, addPairToCache])
+  }, [isDeckComplete, currentDeckCards, addPairToCache])
 
   if (isLoadingDecks) {
     return (
@@ -403,14 +386,6 @@ function Build() {
                 cards={currentDeckCards}
                 onCardClick={handleDeckCardClick}
               />
-              {deckScore !== null && (
-                <div className={styles.scoreDisplay}>
-                  <span className={styles.scoreLabel}>Deck Score:</span>
-                  <span className={styles.scoreValue}>
-                    {deckScore.toFixed(2)}
-                  </span>
-                </div>
-              )}
             </div>
 
             {isDeckComplete && (
