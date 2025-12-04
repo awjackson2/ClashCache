@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import Overlay from '../components/Overlay'
 import SubNavBar from '../components/SubNavBar'
+import styles from './Home.module.css'
 
 const HOME_SUB_LINKS = [
   { label: 'Overview', path: '/' },
@@ -9,9 +10,9 @@ const HOME_SUB_LINKS = [
 
 function Home() {
   return (
-    <div>
+    <div className={styles.wrapper}>
       <SubNavBar links={HOME_SUB_LINKS} ariaLabel="Home sub navigation" />
-      <div>
+      <div className={styles.content}>
         <Outlet />
       </div>
       <Overlay

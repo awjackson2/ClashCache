@@ -1,3 +1,19 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - var(--nav-offset, 0px));
+}
+
+.content {
+  flex: 1 1 auto;
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding-top: calc(var(--spacing-xl) + var(--spacing-2xl));
+  }
+}
 .overlay {
   pointer-events: none;
 }
