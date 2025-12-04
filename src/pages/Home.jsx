@@ -23,6 +23,7 @@ function Home() {
           { x: 100, y: 100 },
           { x: 40, y: 100 },
         ]}
+        zIndex={1}
       />
     </div>
   )

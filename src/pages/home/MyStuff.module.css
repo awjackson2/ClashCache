@@ -5,6 +5,8 @@
   padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-2xl);
   min-height: calc(100dvh - var(--nav-offset, 0px) - var(--subnav-offset, 0px));
   box-sizing: border-box;
+  position: relative;
+  z-index: 2;
 }
 
 .grid {
